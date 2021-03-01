@@ -8,6 +8,16 @@ function setSplash() {
           {
             component: {
               name: 'CharacterList',
+              options: {
+                topBar: {
+                  title: {
+                    component: {
+                      name: 'MarvelLogo',
+                      alignment: 'center',
+                    },
+                  },
+                },
+              },
             },
           },
         ],

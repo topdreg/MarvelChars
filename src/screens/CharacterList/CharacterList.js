@@ -1,10 +1,9 @@
 import React from 'react';
-import {SafeAreaView, FlatList} from 'react-native';
+import {SafeAreaView, View, FlatList} from 'react-native';
 import CharacterRow from './components/CharacterRow';
 import useFetchMarvelCharacters from './hooks/use-fetch-marvel-characters';
 
 const CharacterList = (props) => {
-  console.log('weeee');
   const {
     characters,
     fetchMoreCharacters,
@@ -13,10 +12,23 @@ const CharacterList = (props) => {
   } = useFetchMarvelCharacters();
 
   const renderItem = ({item, item: {name, thumbnail}}) => {
-    console.log(item);
-    return (
-    <CharacterRow name={name} thumbnail={thumbnail} />
-  )};
+    // Check to see that the image string leads to an image
+    const hasImage = thumbnail?.path?.match('image_not_available') === null;
+    // Only render row if there is a name and image
+    if (
+      name &&
+      name !== '' &&
+      thumbnail?.path !== undefined &&
+      thumbnail?.path !== '' &&
+      hasImage === true
+    ) {
+      return (
+        <CharacterRow characterData={item} componentId={props.componentId} />
+      );
+    } else {
+      return <View />;
+    }
+  };
 
   return (
     <SafeAreaView>

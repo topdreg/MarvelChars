@@ -13,9 +13,7 @@ function useFetchMarvelCharacters() {
   useEffect(() => {
     const fetchAPI = async () => {
       const ts = new Date().getTime();
-      const hash = cryptoJS.MD5(
-        ts + MARVEL_PRIVATE_KEY + MARVEL_PUBLIC_KEY,
-      );
+      const hash = cryptoJS.MD5(ts + MARVEL_PRIVATE_KEY + MARVEL_PUBLIC_KEY);
       let response = await fetch(
         `https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${MARVEL_PUBLIC_KEY}&hash=${hash}&offset=${offset}&limit=15`,
       );
