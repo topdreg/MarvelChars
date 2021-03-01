@@ -19,7 +19,6 @@ function useFetchMarvelCharacters() {
       let response = await fetch(
         `https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${MARVEL_PUBLIC_KEY}&hash=${hash}&offset=${offset}&limit=15`,
       );
-      console.log(['RESPONSE', response]);
       response = await response.json();
       const newCharacters = response?.data?.results;
       if (newCharacters !== undefined) {

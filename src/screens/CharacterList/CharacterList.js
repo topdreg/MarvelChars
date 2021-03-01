@@ -12,9 +12,11 @@ const CharacterList = (props) => {
     onRefresh,
   } = useFetchMarvelCharacters();
 
-  const renderItem = ({item: {name, thumbnail}}) => (
+  const renderItem = ({item, item: {name, thumbnail}}) => {
+    console.log(item);
+    return (
     <CharacterRow name={name} thumbnail={thumbnail} />
-  );
+  )};
 
   return (
     <SafeAreaView>
