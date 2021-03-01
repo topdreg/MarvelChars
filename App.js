@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import CharacterList from './src/CharacterList';
+import CharacterList from './src/screens/CharacterList';
 
 const App: () => React$Node = () => {
   return (
