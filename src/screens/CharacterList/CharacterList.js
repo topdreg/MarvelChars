@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, FlatList} from 'react-native';
 import CharacterRow from './components/CharacterRow';
 import useFetchMarvelCharacters from './hooks/use-fetch-marvel-characters';
+import BigTextDescription from 'screens/components/BigTextDescription';
 
 const CharacterList = (props) => {
   const {
@@ -9,7 +10,17 @@ const CharacterList = (props) => {
     fetchMoreCharacters,
     refreshing,
     onRefresh,
+    apiError,
   } = useFetchMarvelCharacters();
+
+  if (apiError === true) {
+    return (
+      <BigTextDescription
+        header="Error!"
+        body="Data service is currently down. Please try again soon!"
+      />
+    );
+  }
 
   const renderItem = ({item, item: {name, thumbnail}}) => {
     // Check to see that the image string leads to an image

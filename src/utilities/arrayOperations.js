@@ -1,6 +1,5 @@
 // Function comes from https://stackoverflow.com/questions/19269545/how-to-get-a-number-of-random-elements-from-an-array
 export function getRandom(arr, n) {
-  console.log(n);
   let result = new Array(n),
     len = arr.length,
     taken = new Array(len);

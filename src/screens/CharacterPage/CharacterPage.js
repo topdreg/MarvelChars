@@ -13,10 +13,6 @@ const CharacterPage = (props) => {
     // Select up to 7 series items
     selectedSeries = getRandom(series.items, Math.min(7, series.items.length));
   }
-
-  // A debate I have is whether to split every section into their own components
-  // I do think if I do too much of that, it may obfuscate the code,
-  // requiring a developer to dig into different directories.
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
