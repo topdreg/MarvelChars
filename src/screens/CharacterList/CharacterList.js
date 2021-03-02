@@ -13,7 +13,7 @@ const CharacterList = (props) => {
     apiError,
   } = useFetchMarvelCharacters();
 
-  if (apiError === true) {
+  if (apiError === true && characters.length === 0) {
     return (
       <BigTextDescription
         header="Error!"

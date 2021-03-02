@@ -28,6 +28,13 @@ const toCharacterPage = async (props, imageUri) => {
         characterData,
         imageUri,
       },
+      options: {
+        topBar: {
+          title: {
+            text: 'Character Data',
+          },
+        },
+      },
     },
   });
 };

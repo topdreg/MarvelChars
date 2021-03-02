@@ -1,11 +1,14 @@
 import React from 'react';
 import {SafeAreaView, View, Text, Image, ScrollView} from 'react-native';
 import {getRandom} from 'utilities/arrayOperations';
+import BigTextDescription from 'screens/components/BigTextDescription';
 import styles from './styles';
 
 const CharacterPage = (props) => {
   const {characterData, imageUri} = props;
-  const {name, description, series} = characterData;
+  const name = characterData?.name;
+  const description = characterData?.description;
+  const series = characterData?.series;
   // Get a randomized set of 7 elements from the series array, to be displayed in the Flatlist
   let selectedSeries = null;
   // First ensure that we have the series data
@@ -13,6 +16,16 @@ const CharacterPage = (props) => {
     // Select up to 7 series items
     selectedSeries = getRandom(series.items, Math.min(7, series.items.length));
   }
+
+  if (description === (null || '') && selectedSeries === null) {
+    return (
+      <BigTextDescription
+        header="Come another time!"
+        body="Data is currently not available for this character."
+      />
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
