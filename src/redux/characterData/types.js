@@ -1,0 +1,3 @@
+export const SET_CHARACTERS = 'SET_CHARACTERS';
+export const SET_OFFSET = 'SET_OFFSET';
+export const RESET_REDUCER = 'RESET_REDUCER';

@@ -1,12 +1,15 @@
 import cryptoJS from 'crypto-js';
 import Config from 'react-native-config';
 import {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {setOffset, setCharacters, resetCharacterData} from '../../../redux/characterData/actions';
 
 function useFetchMarvelCharacters() {
-  const [offset, setOffset] = useState(0);
-  const [characters, setCharacters] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [apiError, setApiError] = useState(false);
+  const dispatch = useDispatch();
+  const offset = useSelector((state) => state?.characterData?.offset);
+  const characters = useSelector((state) => state?.characterData?.characters);
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -21,17 +24,14 @@ function useFetchMarvelCharacters() {
           `https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${Config.MARVEL_PUBLIC_KEY}&hash=${hash}&offset=${offset}&limit=15`,
         );
         response = await response.json();
+        console.log("RESPONSE", response);
         const newCharacters = response?.data?.results;
-        // If response includes character data, append to array of characters
         if (newCharacters !== undefined) {
-          setCharacters((oldCharacters) => {
-            // If an offset of 0 is set, then that means we have refreshed the app
-            if (offset === 0) {
-              return newCharacters;
-            } else {
-              return [...oldCharacters, ...newCharacters];
-            }
-          });
+          if (offset === 0) {
+            dispatch(setCharacters(newCharacters));
+          } else {
+            dispatch(setCharacters([...characters, ...newCharacters]));
+          }
         }
         setApiError(false);
       } catch (e) {
@@ -40,13 +40,15 @@ function useFetchMarvelCharacters() {
       }
     };
     fetchAPI();
-  }, [offset]);
+  }, [offset, characters, dispatch]);
 
-  const fetchMoreCharacters = () => setOffset(offset + 15);
+  const fetchMoreCharacters = () => {
+    dispatch(setOffset(offset + 15));
+  };
 
   const onRefresh = () => {
     setRefreshing(true);
-    setOffset(0);
+    dispatch(resetCharacterData());
     setRefreshing(false);
   };
 
