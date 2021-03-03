@@ -6,9 +6,9 @@ import {persistStore} from 'redux-persist';
 
 export const store = configureStore();
 
+registerComponents(store);
 Navigation.events().registerAppLaunchedListener(() => {
   persistStore(store, null, () => {
-    registerComponents(store);
     Navigation.dismissAllModals();
     setSplash();
   });

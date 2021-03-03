@@ -47,7 +47,7 @@ const CharacterList = (props) => {
     <SafeAreaView>
       {characters.length === 0 && fetching === true && (
         <View style={styles.activityContainer}>
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size="large" color="#d6d6d6" />
         </View>
       )}
       <FlatList
@@ -62,7 +62,7 @@ const CharacterList = (props) => {
         }}
         refreshing={refreshing}
         onRefresh={onRefresh}
-        ListFooterComponent={() => <ActivityIndicator />}
+        ListFooterComponent={() => <ActivityIndicator color="#d6d6d6" />}
       />
     </SafeAreaView>
   );
