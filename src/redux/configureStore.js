@@ -1,5 +1,7 @@
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 import storage from '@react-native-async-storage/async-storage';
-import {createStore, combineReducers} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
+import thunk from 'redux-thunk';
 import {persistReducer} from 'redux-persist';
 import characterDataReducer from './characterData/reducer';
 
@@ -11,6 +13,7 @@ const rootPersistConfig = {
 const characterDataPersistConfig = {
   key: 'characterData',
   storage,
+  stateReconciler: hardSet,
 };
 
 const reducers = combineReducers({
@@ -22,6 +25,7 @@ const reducers = combineReducers({
 
 const persistedReducer = persistReducer(rootPersistConfig, reducers);
 
-const configureStore = () => createStore(persistedReducer);
+const configureStore = () =>
+  createStore(persistedReducer, applyMiddleware(thunk));
 
 export default configureStore;

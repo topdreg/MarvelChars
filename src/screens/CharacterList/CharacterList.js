@@ -11,6 +11,7 @@ const CharacterList = (props) => {
     refreshing,
     onRefresh,
     apiError,
+    fetching,
   } = useFetchMarvelCharacters();
 
   if (apiError === true && characters.length === 0) {
@@ -48,7 +49,11 @@ const CharacterList = (props) => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
         onEndReachedThreshold={0.9}
-        onEndReached={fetchMoreCharacters}
+        onEndReached={() => {
+          if (fetching === false) {
+            fetchMoreCharacters();
+          }
+        }}
         refreshing={refreshing}
         onRefresh={onRefresh}
       />

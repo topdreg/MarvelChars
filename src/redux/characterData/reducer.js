@@ -1,4 +1,4 @@
-import {SET_CHARACTERS, SET_OFFSET, RESET_REDUCER} from './types';
+import {ADD_CHARACTERS, SET_OFFSET, RESET_REDUCER} from './types';
 
 const initialState = {
   characters: [],
@@ -7,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_CHARACTERS:
+    case ADD_CHARACTERS:
       return {
         ...state,
         characters: action.characters,
@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
       return {
         characters: [],
         offset: 0,
-      }
+      };
     default:
       return state;
   }

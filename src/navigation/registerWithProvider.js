@@ -5,7 +5,6 @@ import {Navigation} from 'react-native-navigation';
 // Wrap every component with a Provider so that each component has access to the Redux store
 const registerWithProvider = (containerName, Component, store) => {
   const WrappedComponent = (props) => {
-    console.log(props);
     return (
       <Provider store={store}>
         <Component {...props} />
