@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, View, Text, Image, ScrollView} from 'react-native';
+import {SafeAreaView, View, Text, ScrollView} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {getRandom} from 'utilities/arrayOperations';
 import BigTextDescription from 'screens/components/BigTextDescription';
@@ -40,7 +40,7 @@ const CharacterPage = (props) => {
         )}
         {selectedSeries !== null && (
           <View style={styles.seriesContainer}>
-            <Text style={styles.header}>Series</Text>
+            <Text style={styles.header}>Related Series</Text>
             <View style={styles.series}>
               {selectedSeries.map((item, key) => {
                 return (

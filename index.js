@@ -1,7 +1,7 @@
 import {Navigation} from 'react-native-navigation';
 import registerComponents from 'navigation/registerComponents';
 import {setSplash} from 'navigation/roots';
-import configureStore from './src/redux/configureStore';
+import configureStore from 'redux/configureStore';
 import {persistStore} from 'redux-persist';
 
 export const store = configureStore();

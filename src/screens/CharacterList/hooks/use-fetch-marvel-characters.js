@@ -2,12 +2,11 @@ import cryptoJS from 'crypto-js';
 import Config from 'react-native-config';
 import {useState, useEffect, useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-// Implement absolute path for this (having an issue doing that at the moment)
 import {
   setOffset,
   addCharacters,
   resetCharacterData,
-} from '../../../redux/characterData/actions';
+} from 'redux/characterData/actions';
 
 function useFetchMarvelCharacters() {
   const [refreshing, setRefreshing] = useState(false);
@@ -37,7 +36,7 @@ function useFetchMarvelCharacters() {
       if (newCharacters !== undefined) {
         // Add characters and increase offset by 15 for the next API call
         dispatch(setOffset(offset + 15));
-        dispatch(addCharacters(newCharacters));
+        dispatch(addCharacters([...characters, ...newCharacters]));
       }
       // We can be certain the API is working here
       setApiError(false);
@@ -47,7 +46,7 @@ function useFetchMarvelCharacters() {
       setApiError(true);
       setFetching(false);
     }
-  }, [dispatch, offset, fetching]);
+  }, [dispatch, offset, fetching, characters]);
 
   useEffect(() => {
     // Deals with the case where the app has either just loaded or been refreshed
