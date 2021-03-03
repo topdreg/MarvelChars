@@ -55,6 +55,7 @@ function useFetchMarvelCharacters() {
     }
   }, [characters, fetchMoreCharacters]);
 
+  // Function to refresh character data when uses swipes to refresh
   const onRefresh = () => {
     if (fetching === false) {
       setRefreshing(true);

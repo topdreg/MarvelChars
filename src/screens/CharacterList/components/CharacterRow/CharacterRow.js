@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navigation} from 'react-native-navigation';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import styles from './styles';
 
