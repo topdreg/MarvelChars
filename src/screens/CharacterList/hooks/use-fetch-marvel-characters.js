@@ -24,6 +24,10 @@ function useFetchMarvelCharacters() {
       setFetching(true);
       // Get hash and timestamp to make API call
       const ts = new Date().getTime();
+      /*
+       * The private key is included in the mobile app code. That is never a good idea from a security standpoint.
+       * This is a code challenge though, so I hope that is okay.
+       */
       const hash = cryptoJS.MD5(
         ts + Config.MARVEL_PRIVATE_KEY + Config.MARVEL_PUBLIC_KEY,
       );
