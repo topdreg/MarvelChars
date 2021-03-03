@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, FlatList, ActivityIndicator} from 'react-native';
 import CharacterRow from './components/CharacterRow';
 import useFetchMarvelCharacters from './hooks/use-fetch-marvel-characters';
-import BigTextDescription from 'screens/components/BigTextDescription';
+import TextDescription from 'screens/components/TextDescription';
 import styles from './styles';
 
 const CharacterList = (props) => {
@@ -17,7 +17,7 @@ const CharacterList = (props) => {
 
   if (apiError === true && characters.length === 0) {
     return (
-      <BigTextDescription
+      <TextDescription
         header="Error!"
         body="Data service is currently down. Please try again soon!"
       />

@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, Text, ScrollView} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {getRandom} from 'utilities/arrayOperations';
-import BigTextDescription from 'screens/components/BigTextDescription';
+import TextDescription from 'screens/components/TextDescription';
 import styles from './styles';
 
 const CharacterPage = (props) => {
@@ -20,7 +20,7 @@ const CharacterPage = (props) => {
 
   if (description === (null || '') && selectedSeries === null) {
     return (
-      <BigTextDescription
+      <TextDescription
         header="Come another time!"
         body="Data is currently not available for this character."
       />

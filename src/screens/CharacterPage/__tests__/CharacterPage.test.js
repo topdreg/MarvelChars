@@ -25,8 +25,3 @@ it('renders correctly with data', () => {
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
-
-// it('renders correctly without data', () => {
-//   const tree = renderer.create(<CharacterPage />).toJSON();
-//   expect(tree).toMatchSnapshot();
-// });

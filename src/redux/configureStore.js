@@ -5,6 +5,10 @@ import thunk from 'redux-thunk';
 import {persistReducer} from 'redux-persist';
 import characterDataReducer from './characterData/reducer';
 
+// Here we combine the Redux reducers to be used across the app.
+// Redux-Thunk is included as middleware, although it has not been
+// used anywhere in the app yet.
+
 const rootPersistConfig = {
   key: 'root',
   storage,
