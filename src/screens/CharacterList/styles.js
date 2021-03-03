@@ -1,7 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  topCell: {
-    borderTopWidth: 0.3,
+  activityContainer: {
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
