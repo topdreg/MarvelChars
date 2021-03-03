@@ -5,6 +5,7 @@ exports[`renders correctly with data 1`] = `
   emulateUnlessSupported={true}
   style={
     Object {
+      "backgroundColor": "white",
       "height": "100%",
       "width": "100%",
     }
@@ -33,20 +34,38 @@ exports[`renders correctly with data 1`] = `
       >
         A-Bomb
       </Text>
-      <Image
-        source={
-          Object {
-            "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
-          }
-        }
+      <View
         style={
-          Object {
-            "height": 70,
-            "marginBottom": 50,
-            "width": 70,
-          }
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Object {
+              "height": 70,
+              "marginBottom": 50,
+              "width": 70,
+            },
+          ]
         }
-      />
+      >
+        <FastImageView
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg",
+            }
+          }
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <View
         style={
           Object {

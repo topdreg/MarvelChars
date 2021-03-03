@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navigation} from 'react-native-navigation';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
+import FastImage from 'react-native-fast-image';
 import styles from './styles';
 
 const CharacterRow = (props) => {
@@ -13,7 +14,7 @@ const CharacterRow = (props) => {
         style={styles.pressable}
         onPress={() => toCharacterPage(props, imageUri)}>
         <Text>{name}</Text>
-        <Image style={styles.image} source={{uri: imageUri}} />
+        <FastImage style={styles.image} source={{uri: imageUri}} />
       </TouchableOpacity>
     </View>
   );

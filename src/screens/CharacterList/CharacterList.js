@@ -1,8 +1,9 @@
 import React from 'react';
-import {SafeAreaView, View, FlatList} from 'react-native';
+import {SafeAreaView, View, FlatList, ActivityIndicator} from 'react-native';
 import CharacterRow from './components/CharacterRow';
 import useFetchMarvelCharacters from './hooks/use-fetch-marvel-characters';
 import BigTextDescription from 'screens/components/BigTextDescription';
+import styles from './styles';
 
 const CharacterList = (props) => {
   const {
@@ -11,6 +12,7 @@ const CharacterList = (props) => {
     refreshing,
     onRefresh,
     apiError,
+    fetching,
   } = useFetchMarvelCharacters();
 
   if (apiError === true && characters.length === 0) {
@@ -43,14 +45,24 @@ const CharacterList = (props) => {
 
   return (
     <SafeAreaView>
+      {characters.length === 0 && fetching === true && (
+        <View style={styles.activityContainer}>
+          <ActivityIndicator size="large" />
+        </View>
+      )}
       <FlatList
         data={characters}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
         onEndReachedThreshold={0.9}
-        onEndReached={fetchMoreCharacters}
+        onEndReached={() => {
+          if (fetching === false) {
+            fetchMoreCharacters();
+          }
+        }}
         refreshing={refreshing}
         onRefresh={onRefresh}
+        ListFooterComponent={() => <ActivityIndicator />}
       />
     </SafeAreaView>
   );

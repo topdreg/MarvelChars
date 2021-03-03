@@ -6,6 +6,7 @@ exports[`renders correctly 1`] = `
     Array [
       undefined,
       Object {
+        "backgroundColor": "white",
         "borderBottomWidth": 0.4,
         "height": 100,
         "width": "100%",
@@ -39,19 +40,37 @@ exports[`renders correctly 1`] = `
     <Text>
       A-Bomb
     </Text>
-    <Image
-      source={
-        Object {
-          "uri": "undefined.undefined",
-        }
-      }
+    <View
       style={
-        Object {
-          "height": 70,
-          "width": 70,
-        }
+        Array [
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "height": 70,
+            "width": 70,
+          },
+        ]
       }
-    />
+    >
+      <FastImageView
+        resizeMode="cover"
+        source={
+          Object {
+            "uri": "undefined.undefined",
+          }
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
+    </View>
   </View>
 </View>
 `;

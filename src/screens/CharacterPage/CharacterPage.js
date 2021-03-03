@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, View, Text, Image, ScrollView} from 'react-native';
+import FastImage from 'react-native-fast-image';
 import {getRandom} from 'utilities/arrayOperations';
 import BigTextDescription from 'screens/components/BigTextDescription';
 import styles from './styles';
@@ -30,7 +31,7 @@ const CharacterPage = (props) => {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.name}>{name}</Text>
-        <Image style={styles.image} source={{uri: imageUri}} />
+        <FastImage style={styles.image} source={{uri: imageUri}} />
         {description !== (undefined || '') && (
           <View style={styles.descriptionContainer}>
             <Text style={styles.header}>Description</Text>
